@@ -6,33 +6,34 @@
         <artifactId>train</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>member</artifactId>
+    <artifactId>gateway</artifactId>
     <packaging>jar</packaging>
-    <name>member Maven Webapp</name>
+    <name>gateway Maven Webapp</name>
     <url>http://maven.apache.org</url>
-<!--    <modules>-->
-<!--        <module>src/main/gateway</module>-->
-<!--    </modules>-->
+
     <dependencies>
+        <!-- 移除web依赖声明 -->
+
         <dependency>
-            <groupId>com.jiawa</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
+    <build>
+        <finalName>gateway</finalName>
+    </build>
 </project>
